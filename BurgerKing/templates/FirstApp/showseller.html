@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+{% endblock %}
+
+
+
+
+{% block content %}
+   <center>
+        <table border="1px solid black" style=" background-color:#0FF2CE; width:75%; padding:43px; " class="'table table-dark">
+            <tr>
+                <th> ID </th>
+                <th> UserName </th>
+                <th> Mobile No </th>
+                <th> Email </th>
+                <th> Burger Type </th>
+                <th> Burger Image </th>
+                <th> Gender </th>
+                <th> Order Date </th>
+                <th> Update  </th>
+                <th> Delete </th>
+            </tr>
+
+            {% for prod in prods %}
+            <tr>
+                <td>{{prod.id}}</td>
+                 <td>{{prod.uname}}</td>
+                <td> {{prod.mobno}}</td>
+                <td>{{prod.email}}</td>
+                <td>{{prod.burg_type}}</td>
+                <td> <img class="card-img-top" src="{{prod.burg_image.url}}" alt="..." height="200px"/></td>
+                <td>{{prod.gender}}</td>
+                <td>{{prod.order_date}}</td>
+
+
+
+                 <td>
+                    <a href="{% url 'updateseller' prod.id %}">
+                    <button class="btn btn-warning"> Update </button>
+                    </a>
+                 </td>
+
+                 <td> <a href="{% url 'delseller' prod.id %}"> <button class="'btn btn-danger"> Delete </button> </a> </td>
+
+             </tr>
+
+            {% endfor %}
+        </table> <br>
+
+                    <a href="{% url 'addseller' %}">
+                      <button class="btn btn-primary"> Add more products </button>
+                    </a>
+      </center>
+
+{% endblock %}
+
+
+
